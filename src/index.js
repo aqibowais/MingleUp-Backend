@@ -14,8 +14,8 @@ const port = process.env.PORT || 5000;
 const dbUrl = process.env.MONGOURI || "";
 
 //middlewares
-app.use(express.json())
-app.use(express.urlencoded({extended:true}))
+app.use(express.json({ limit: '10mb' })) // Increase payload limit to 10MB
+app.use(express.urlencoded({ extended: true, limit: '10mb' }))
 app.use(cookieParser())
 app.use(cors({
   origin:"http://localhost:5173",

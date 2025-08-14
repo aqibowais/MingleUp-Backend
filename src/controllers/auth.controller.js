@@ -81,7 +81,7 @@ export const handleUserLogout = async (req, res) => {
 
 export const handleUpdateProfileImage = async (req, res) => {
   try {
-    const { profilePic } = req.file;
+    const { profilePic } = req.body; // Changed from req.file to req.body
   
     const userId = req.user._id; //user data alrady set from the protectRoute middleware
 
@@ -91,7 +91,7 @@ export const handleUpdateProfileImage = async (req, res) => {
     const uploadResponse = await cloudinary.uploader.upload(profilePic);
     const updatedUser = await User.findByIdAndUpdate(
       userId,
-      { profilePic: uploadResponse.secureUrl },
+      { profilePic: uploadResponse.secure_url }, // Fixed typo: secureUrl -> secure_url
       { new: true }
     );
     res.status(200).json(updatedUser);

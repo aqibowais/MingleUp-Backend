@@ -9,7 +9,7 @@ route.post("/signup",handleUserSignup)
 route.post("/login",handleUserLogin)
 route.post("/logout",handleUserLogout)
 
-route.post("/update-profile",protectRoute,handleUpdateProfileImage)
+route.put("/update-profile",protectRoute,handleUpdateProfileImage)
 
 route.get("/check",protectRoute,checkAuth) //for checking auth on refreshing pages etc
 
