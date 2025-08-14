@@ -1,6 +1,6 @@
 import express from "express"
-import { handleUserLogin, handleUserLogout, handleUserSignup,handleUpdateProfileImage, checkAuth } from "./controllers/auth.controller.js"
-import { protectRoute } from "./middlewares/auth.middleware.js"
+import { handleUserLogin, handleUserLogout, handleUserSignup,handleUpdateProfileImage, checkAuth } from "../controllers/auth.controller.js"
+import {protectRoute} from "../middlewares/auth.middleware.js"
 
 const route = express.Router()
 

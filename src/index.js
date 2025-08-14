@@ -1,6 +1,8 @@
 import express from "express";
 import cookieParser from "cookie-parser";
-import authRoutes from "./auth.route.js";
+import cors from "cors"
+import authRoutes from "./routes/auth.route.js"
+import messageRoutes from "./routes/message.route.js"
 import { connectDB } from "./lib/db.connection.js";
 
 import dotenv from "dotenv";
@@ -15,10 +17,15 @@ const dbUrl = process.env.MONGOURI || "";
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 app.use(cookieParser())
+app.use(cors({
+  origin:"http://localhost:5173",
+  credentials:true
+}))
 
 
 //routes
 app.use("/api/auth", authRoutes);
+app.use("/api/message", messageRoutes);
 
 app.listen(port, () => {
   console.log(`server is running on port : ${port}`);
