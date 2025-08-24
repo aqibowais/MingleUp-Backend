@@ -12,7 +12,7 @@ dotenv.config();
 
 const port = process.env.PORT || 5000;
 const dbUrl = process.env.MONGOURI || "";
-const _dirName = path.resolve()
+// const _dirName = path.resolve()
 
 //middlewares
 app.use(express.json({ limit: '10mb' })) // Increase payload limit to 10MB
@@ -29,14 +29,14 @@ app.use("/api/auth", authRoutes);
 app.use("/api/messages", messageRoutes);
 
 // if we are in production then server frontend as static 
-if(process.env.NODE_ENV === "production"){
-  app.use(express.static(path.join(_dirName,"../../MingleUp-Frontend/dist")))
+// if(process.env.NODE_ENV === "production"){
+//   app.use(express.static(path.join(_dirName,"../../MingleUp-Frontend/dist")))
 
   
-}
-app.get("*",(req,res)=>{
-    res.sendFile(path.join(_dirName,"../../MingleUp-Frontend/dist","dist","index.html"))
-  })
+// }
+// app.get("*",(req,res)=>{
+//     res.sendFile(path.join(_dirName,"../../MingleUp-Frontend/dist","dist","index.html"))
+//   })
 server.listen(port, () => {
   console.log(`server is running on port : ${port}`);
   connectDB(dbUrl)
