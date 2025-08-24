@@ -19,7 +19,7 @@ app.use(express.json({ limit: '10mb' })) // Increase payload limit to 10MB
 app.use(express.urlencoded({ extended: true, limit: '10mb' }))
 app.use(cookieParser())
 app.use(cors({
-  origin:["http://localhost:5173","https://mingleup-frontend.onrender.com/"],
+  origin:["http://localhost:5173","https://mingleup-frontend.onrender.com"],
   credentials:true
 }))
 
