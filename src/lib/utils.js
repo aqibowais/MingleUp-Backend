@@ -7,7 +7,7 @@ export const generateToken=(userId,res)=>{
     res.cookie("token",token,{
         maxAge:7*24*60*60*100, //in ms
         httpOnly:true,
-        sameSite:false,
+        sameSite:"none",
         secure:process.env.NODE_ENV !== "development"
     })
     return token
