@@ -30,13 +30,13 @@ app.use("/api/messages", messageRoutes);
 
 // if we are in production then server frontend as static 
 if(process.env.NODE_ENV === "production"){
-  app.use(express.static(path.join(_dirName,"../MingleUp-Frontend/dist")))
+  app.use(express.static(path.join(_dirName,"../../MingleUp-Frontend/dist")))
 
-  app.get("*",(req,res)=>{
-    res.sendFile(path.join(_dirName,"../MingleUp-Frontend/dist","dist","index.html"))
-  })
+  
 }
-
+app.get("*",(req,res)=>{
+    res.sendFile(path.join(_dirName,"../../MingleUp-Frontend/dist","dist","index.html"))
+  })
 server.listen(port, () => {
   console.log(`server is running on port : ${port}`);
   connectDB(dbUrl)
